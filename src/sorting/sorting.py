@@ -24,7 +24,7 @@ def merge(arrA, arrB):
 
     #compare the first element of each array
     # smaller element goes into merged array
-        if arrA[arrA_idx] < arrB[arrB_idx]:
+        elif arrA[arrA_idx] < arrB[arrB_idx]:
             merged_arr[idx] = arrA[arrA_idx]
 
             arrA_idx += 1
@@ -59,9 +59,6 @@ def merge_sort(arr):
 
         arr = merge(left, right)
         #put things back together: merge
-
-
-
 
     # beg = arr[0].index()
     # end = arr[-1].index()
@@ -135,3 +132,7 @@ def merge_sort_in_place(arr, left, right):
         merge_sort_in_place(arr, middle + 1, right)
 
         merge_in_place(arr, left, middle, right)
+
+
+if __name__ == "__main__":
+    merge_sort([2,1])

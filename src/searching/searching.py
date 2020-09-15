@@ -1,36 +1,63 @@
-# TO-DO: Implement a recursive implementation of binary search
 
-#find the middle
-#check if the target is above or below
-#focus on one side or the other
-def binary_search(arr, target):
+# #find the middle
+
+# #check if the target is above or below
+
+# # // or use round() or math.floor()
+# # math.ceil(5.5) = 6
+# def binary_search(arr, target):
+#     if len(arr) == 0:
+#         return -1
+#     #keep track of upper and lower bounds
+#     low = 0
+#     high = len(arr)-1
+#     while low <= high:
+#     #find the middle of those bounds
+#         middle = (low + high) // 2 # // rounds to make sure it's an int
+
+#         if target == arr[middle]:
+#             return middle
+            
+#         #move upper or lower bound to the middle (to cut array in half)
+#         ## depending on whether your above or below target
+#         elif target > arr[middle]:
+#             low = middle - 1
+#         elif target < arr[middle]:
+#             high = middle + 1 #rounding down makes this weird
+
+#         #do it again
+
+#         #stop if we have no values left
+
+#     return -1
+
+
+#move toward base case
+## pass high and low as params
+
+def binary_search(arr, target, low, high):
+    middle = (low + high)//2
+    #base case
+    ## if our array is empty
     if len(arr) == 0:
-    
-    low = 0
-    high = len(arr)-1
+        return -1
+    # if low is gte high
+    if low>= high:
+        return -1
 
-    return -1
-    # Your code here
-    # low = 0
-    # high = len(arr) - 1
+    if arr[middle] == target:
+        return middle
 
-    # middle = (low + high) // 2
-    # guess = arr[middle]
-    # if guess == target:
-    #     return middle
-    # elif guess > target:
-    #     high = middle - 1
-    #     binary_search(high, target, start, end)
-    # else:
-    #     low = middle + 1
-    #     binary_search(low, target, start, end)
-    # return -1
+    else:
+        if target > arr[middle]:
+            low = middle - 1 #get right of the right side
 
-# STRETCH: implement an order-agnostic binary search
-# This version of binary search should correctly find 
-# the target regardless of whether the input array is
-# sorted in ascending order or in descending order
-# You can implement this function either recursively 
-# or iteratively
-def agnostic_binary_search(arr, target):
-    # Your code her
+            #one_half = arr[middle:high + 1]
+
+        elif target < arr[middle]:
+            high = middle + 1 #get rid of the left side
+            
+            #one_half = arr[low:middle + 1]
+            #remove low and high and change arr to one_half
+    return binary_search(arr, target, low, high)
+
